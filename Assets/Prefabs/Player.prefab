@@ -956,6 +956,10 @@ MonoBehaviour:
   - Umm.... Hello there?
   - I've never noticed you before.
   - Well... best not to dwell on it.
+  mapConversation:
+  - 'Hmm, a map. It looks like Felix was searching for something. '
+  - He has the docks circled. I should go look there. They're not far, just off to
+    the right
 --- !u!1 &4349823326428599087
 GameObject:
   m_ObjectHideFlags: 0

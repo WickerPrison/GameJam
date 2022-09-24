@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerDialogue : MonoBehaviour
 {
     public List<string> sawPlayerConversation = new List<string>();
+    public List<string> mapConversation = new List<string>();
     List<string> currentConversation = new List<string>();
     InputManager im;
     int lineIndex;
@@ -47,6 +48,15 @@ public class PlayerDialogue : MonoBehaviour
     public void SawPlayerConversation()
     {
         currentConversation = sawPlayerConversation;
+        lineIndex = 0;
+        inConversation = true;
+        NextLine();
+        im.Dialogue();
+    }
+
+    public void MapConversation()
+    {
+        currentConversation = mapConversation;
         lineIndex = 0;
         inConversation = true;
         NextLine();
