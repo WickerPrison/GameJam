@@ -40,6 +40,6 @@ public class Map : MonoBehaviour
             return;
         }
 
-        playerDialogue.MapConversation();
+        playerDialogue.StartConversation(playerDialogue.mapConversation);
     }
 }

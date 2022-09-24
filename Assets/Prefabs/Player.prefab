@@ -897,6 +897,8 @@ GameObject:
   - component: {fileID: 4349823325746585520}
   - component: {fileID: 4349823325746585521}
   - component: {fileID: 6153816941485323006}
+  - component: {fileID: 7001948264819013644}
+  - component: {fileID: 7215691888401747429}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -960,6 +962,53 @@ MonoBehaviour:
   - 'Hmm, a map. It looks like Felix was searching for something. '
   - He has the docks circled. I should go look there. They're not far, just off to
     the right
+--- !u!61 &7001948264819013644
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4349823325746585522}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.053503036, y: 0.9095526}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.2458534, y: 9.382149}
+  m_EdgeRadius: 0
+--- !u!50 &7215691888401747429
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4349823325746585522}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4349823326428599087
 GameObject:
   m_ObjectHideFlags: 0

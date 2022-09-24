@@ -36,6 +36,15 @@ public class PlayerDialogue : MonoBehaviour
         lineIndex += 1;
     }
 
+    public void StartConversation(List<string> conversation)
+    {
+        currentConversation = conversation;
+        lineIndex = 0;
+        inConversation = true;
+        NextLine();
+        im.Dialogue();
+    }
+
     void EndConversation()
     {
         lineIndex = 0;
@@ -43,23 +52,5 @@ public class PlayerDialogue : MonoBehaviour
         im.Gameplay();
         playerScript.speechBubble.SetActive(false);
         playerScript.animator.Play("Idle");
-    }
-
-    public void SawPlayerConversation()
-    {
-        currentConversation = sawPlayerConversation;
-        lineIndex = 0;
-        inConversation = true;
-        NextLine();
-        im.Dialogue();
-    }
-
-    public void MapConversation()
-    {
-        currentConversation = mapConversation;
-        lineIndex = 0;
-        inConversation = true;
-        NextLine();
-        im.Dialogue();
     }
 }

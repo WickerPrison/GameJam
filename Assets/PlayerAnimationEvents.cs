@@ -13,6 +13,6 @@ public class PlayerAnimationEvents : MonoBehaviour
 
     public void SawPlayer()
     {
-        playerDialogue.SawPlayerConversation();
+        playerDialogue.StartConversation(playerDialogue.sawPlayerConversation);
     }
 }
