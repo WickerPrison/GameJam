@@ -9,10 +9,17 @@ public class HoggarthDialogue : NPCdialogue
     [SerializeField] List<string> conversation1repeat;
     [SerializeField] List<int> whoIsTalking1;
     [SerializeField] List<int> whoIsTalking1Repeat;
+
+    [SerializeField] List<string> conversation2;
+    [SerializeField] List<string> conversation2repeat;
+    [SerializeField] List<int> whoIsTalking2;
+    [SerializeField] List<int> whoIsTalking2Repeat;
+
     List<string> currentConversation;
     List<int> currentWhoIsTalking;
     int lineIndex;
     bool hadFirstConversation = false;
+    bool hadSecondConversation = false;
 
 
     public override void Start()
@@ -35,6 +42,23 @@ public class HoggarthDialogue : NPCdialogue
             {
                 currentConversation = conversation1repeat;
                 currentWhoIsTalking = whoIsTalking1Repeat;
+            }
+
+            lineIndex = 0;
+            NextDialogue();
+        }
+        else
+        {
+            if (!hadSecondConversation)
+            {
+                hadSecondConversation = true;
+                currentConversation = conversation2;
+                currentWhoIsTalking = whoIsTalking2;
+            }
+            else
+            {
+                currentConversation = conversation2repeat;
+                currentWhoIsTalking = whoIsTalking2Repeat;
             }
 
             lineIndex = 0;
