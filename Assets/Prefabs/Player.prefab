@@ -935,7 +935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407414a67d0e54e4da9beb303bccdef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
+  walkSpeed: 3
   speechBubble: {fileID: 9049190514143213641}
   dialogueText: {fileID: 2338033878971967456}
   textPositionLeft: {x: 9.382202, y: 3.552499, z: 0}
