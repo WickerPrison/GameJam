@@ -495,7 +495,9 @@ MonoBehaviour:
   speechBubble: {fileID: 1188630284099674392}
   dialogueText: {fileID: 7223923109903132216}
   playerScript: {fileID: 0}
+  isTalking: 0
   animator: {fileID: 1294959712292324754}
+  im: {fileID: 0}
 --- !u!95 &1294959712292324754
 Animator:
   serializedVersion: 3
@@ -1368,6 +1370,14 @@ PrefabInstance:
     - target: {fileID: 3879320746076832578, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011609040508975378, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 7011609040508975378, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.51
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3879320745951954969, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}

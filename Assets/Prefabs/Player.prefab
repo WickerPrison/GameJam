@@ -922,6 +922,7 @@ MonoBehaviour:
   walkSpeed: 5
   speechBubble: {fileID: 9049190514143213641}
   dialogueText: {fileID: 2338033878971967456}
+  animator: {fileID: 0}
 --- !u!1 &4349823326428599087
 GameObject:
   m_ObjectHideFlags: 0

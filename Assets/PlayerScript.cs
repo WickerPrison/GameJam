@@ -9,7 +9,7 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] float walkSpeed;
     public GameObject speechBubble;
     [SerializeField] TextMeshProUGUI dialogueText;
-    Animator animator;
+    public Animator animator;
     Vector3 initialScale;
     Vector3 speechBubblePosition;
     Vector3 reverseX = new Vector3(-1, 1, 1);
