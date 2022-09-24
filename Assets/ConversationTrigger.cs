@@ -9,6 +9,7 @@ public class ConversationTrigger : MonoBehaviour
     PlayerDialogue playerDialogue;
     PlayerScript playerScript;
     bool hasTriggered = false;
+    [SerializeField] bool backJourney;
 
     private void Start()
     {
@@ -19,6 +20,11 @@ public class ConversationTrigger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(hasTriggered)
+        {
+            return;
+        }
+
+        if(backJourney && !playerScript.mysterySolved)
         {
             return;
         }

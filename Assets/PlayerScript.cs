@@ -6,7 +6,7 @@ using TMPro;
 public class PlayerScript : MonoBehaviour
 {
     float moveDir;
-    [SerializeField] float walkSpeed;
+    float walkSpeed = 10;
     public GameObject speechBubble;
     [SerializeField] TextMeshProUGUI dialogueText;
     [SerializeField] Vector3 textPositionLeft;
@@ -17,6 +17,7 @@ public class PlayerScript : MonoBehaviour
     Vector3 initialScale;
     Vector3 reverseX = new Vector3(-1, 1, 1);
     InputManager im;
+    public bool mysterySolved = false;
 
     // Start is called before the first frame update
     void Start()
