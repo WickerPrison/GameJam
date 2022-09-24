@@ -9,7 +9,6 @@ public class NPCdialogue : MonoBehaviour
     [SerializeField] GameObject talkMessage;
     public GameObject speechBubble;
     public TextMeshProUGUI dialogueText;
-    public PlayerControls controls;
     public PlayerScript playerScript;
     public bool isTalking = false;
     string dialogueWords = "This is my dialogue";
@@ -17,20 +16,16 @@ public class NPCdialogue : MonoBehaviour
     [SerializeField] Animator animator;
     Vector3 textBubblePosition;
     Vector3 reverseX = new Vector3(-1, 1, 1);
-
-    private void Awake()
-    {
-        controls = new PlayerControls();
-        controls.Dialogue.Disable();
-    }
+    public InputManager im;
 
     // Start is called before the first frame update
     public virtual void Start()
     {
+        im = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InputManager>();
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         speechBubble.SetActive(false);
-        controls.Gameplay.Interact.performed += ctx => StartConversation();
-        controls.Dialogue.Disable();
+        im.controls.Gameplay.Interact.performed += ctx => StartConversation();
+        im.controls.Dialogue.Disable();
         initialScale = animator.transform.localScale;
         textBubblePosition = speechBubble.transform.localPosition;
     }
@@ -43,10 +38,7 @@ public class NPCdialogue : MonoBehaviour
         }
 
 
-        controls.Gameplay.Disable();
-        controls.Dialogue.Enable();
-        playerScript.controls.Gameplay.Disable();
-        playerScript.controls.Dialogue.Enable();
+        im.Dialogue();
         isTalking = true;
 
         FirstLine();
@@ -80,15 +72,5 @@ public class NPCdialogue : MonoBehaviour
             animator.transform.localScale = Vector3.Scale(initialScale, reverseX);
             speechBubble.transform.localPosition = Vector3.Scale(textBubblePosition, reverseX);
         }
-    }
-
-    private void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
     }
 }

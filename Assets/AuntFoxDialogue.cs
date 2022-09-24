@@ -15,7 +15,7 @@ public class AuntFoxDialogue : NPCdialogue
     public override void Start()
     {
         base.Start();
-        controls.Dialogue.Continue.performed += ctx => NextDialogue();
+        im.controls.Dialogue.Continue.performed += ctx => NextDialogue();
     }
 
     public override void FirstLine()
@@ -60,10 +60,7 @@ public class AuntFoxDialogue : NPCdialogue
     {
         playerScript.speechBubble.SetActive(false);
         speechBubble.SetActive(false);
-        controls.Dialogue.Disable();
-        controls.Gameplay.Enable();
-        playerScript.controls.Dialogue.Disable();
-        playerScript.controls.Gameplay.Enable();
+        im.Gameplay();
         isTalking = false;
     }
 

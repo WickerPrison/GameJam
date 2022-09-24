@@ -5,7 +5,6 @@ using TMPro;
 
 public class PlayerScript : MonoBehaviour
 {
-    public PlayerControls controls;
     float moveDir;
     [SerializeField] float walkSpeed;
     public GameObject speechBubble;
@@ -14,17 +13,14 @@ public class PlayerScript : MonoBehaviour
     Vector3 initialScale;
     Vector3 speechBubblePosition;
     Vector3 reverseX = new Vector3(-1, 1, 1);
-
-    private void Awake()
-    {
-        controls = new PlayerControls();
-    }
+    InputManager im;
 
     // Start is called before the first frame update
     void Start()
     {
-        controls.Gameplay.Walk.performed += ctx => moveDir = ctx.ReadValue<float>();
-        controls.Gameplay.Walk.canceled += ctx => moveDir = 0;
+        im = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InputManager>();
+        im.controls.Gameplay.Walk.performed += ctx => moveDir = ctx.ReadValue<float>();
+        im.controls.Gameplay.Walk.canceled += ctx => moveDir = 0;
 
         speechBubblePosition = speechBubble.transform.localPosition;
         speechBubble.SetActive(false);
@@ -61,15 +57,5 @@ public class PlayerScript : MonoBehaviour
         animator.SetFloat("MoveDir", Mathf.Abs(moveDir));
 
         transform.Translate(new Vector2(moveDir * Time.deltaTime * walkSpeed, 0));
-    }
-
-    private void OnEnable()
-    {
-        controls.Enable();
-    }
-
-    private void OnDisable()
-    {
-        controls.Disable();
     }
 }
