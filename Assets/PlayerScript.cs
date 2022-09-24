@@ -9,20 +9,24 @@ public class PlayerScript : MonoBehaviour
     [SerializeField] float walkSpeed;
     public GameObject speechBubble;
     [SerializeField] TextMeshProUGUI dialogueText;
+    [SerializeField] Vector3 textPositionLeft;
+    [SerializeField] Vector3 textPositionRight;
+    [SerializeField] RectTransform speechBubbleCanvas;
+    SpriteRenderer speechBubbleRenderer;
     public Animator animator;
     Vector3 initialScale;
-    Vector3 speechBubblePosition;
     Vector3 reverseX = new Vector3(-1, 1, 1);
     InputManager im;
 
     // Start is called before the first frame update
     void Start()
     {
+        speechBubbleRenderer = speechBubble.GetComponent<SpriteRenderer>();
+
         im = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InputManager>();
         im.controls.Gameplay.Walk.performed += ctx => moveDir = ctx.ReadValue<float>();
         im.controls.Gameplay.Walk.canceled += ctx => moveDir = 0;
 
-        speechBubblePosition = speechBubble.transform.localPosition;
         speechBubble.SetActive(false);
 
         animator = GetComponentInChildren<Animator>();
@@ -66,12 +70,14 @@ public class PlayerScript : MonoBehaviour
     public void LookLeft()
     {
         animator.transform.localScale = Vector3.Scale(initialScale, reverseX);
-        speechBubble.transform.localPosition = Vector3.Scale(speechBubblePosition, reverseX);
+        speechBubbleCanvas.localPosition = textPositionRight;
+        speechBubbleRenderer.flipX = true;
     }
 
     public void LookRight()
     {
         animator.transform.localScale = initialScale;
-        speechBubble.transform.localPosition = speechBubblePosition;
+        speechBubbleCanvas.localPosition = textPositionLeft;
+        speechBubbleRenderer.flipX = false;
     }
 }

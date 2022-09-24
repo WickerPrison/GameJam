@@ -8,6 +8,10 @@ public class NPCdialogue : MonoBehaviour
     public float talkDistance;
     [SerializeField] GameObject talkMessage;
     public GameObject speechBubble;
+    SpriteRenderer speechBubbleRenderer;
+    [SerializeField] Vector3 textPositionLeft;
+    [SerializeField] Vector3 textPositionRight;
+    [SerializeField] RectTransform speechBubbleCanvas;
     public TextMeshProUGUI dialogueText;
     public PlayerScript playerScript;
     public bool isTalking = false;
@@ -23,6 +27,7 @@ public class NPCdialogue : MonoBehaviour
     {
         im = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InputManager>();
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        speechBubbleRenderer = speechBubble.GetComponent<SpriteRenderer>();
         speechBubble.SetActive(false);
         im.controls.Gameplay.Interact.performed += ctx => StartConversation();
         im.controls.Dialogue.Disable();
@@ -72,13 +77,25 @@ public class NPCdialogue : MonoBehaviour
 
         if (playerScript.transform.position.x > transform.position.x)
         {
-            animator.transform.localScale = initialScale;
-            speechBubble.transform.localPosition = textBubblePosition;
+            LookRight();
         }
         else if (playerScript.transform.position.x < transform.position.x)
         {
-            animator.transform.localScale = Vector3.Scale(initialScale, reverseX);
-            speechBubble.transform.localPosition = Vector3.Scale(textBubblePosition, reverseX);
+            LookLeft();
         }
+    }
+
+    void LookRight()
+    {
+        animator.transform.localScale = initialScale;
+        speechBubbleRenderer.flipX = false;
+        speechBubbleCanvas.localPosition = textPositionLeft;
+    }
+
+    void LookLeft()
+    {
+        animator.transform.localScale = Vector3.Scale(initialScale, reverseX);
+        speechBubbleRenderer.flipX = true;
+        speechBubbleCanvas.localPosition = textPositionRight;
     }
 }
