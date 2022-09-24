@@ -20,18 +20,25 @@ public class AuntFoxDialogue : NPCdialogue
 
     public override void FirstLine()
     {
-        switch (conversationCounter)
+        if (!playerScript.mysterySolved)
         {
-            case 0:
-                conversationCounter += 1;
-                playerScript.speechBubble.SetActive(false);
-                speechBubble.SetActive(true);
-                dialogueText.text = line1;
-                break;
-            default:
-                line = 0;
-                RepeatedLIne();
-                break;
+            switch (conversationCounter)
+            {
+                case 0:
+                    conversationCounter += 1;
+                    playerScript.speechBubble.SetActive(false);
+                    speechBubble.SetActive(true);
+                    dialogueText.text = line1;
+                    break;
+                default:
+                    line = 0;
+                    RepeatedLIne();
+                    break;
+            }
+        }
+        else
+        {
+
         }
     }
 

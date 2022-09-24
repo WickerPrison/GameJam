@@ -15,14 +15,33 @@ MonoBehaviour:
   talkDistance: 5
   talkMessage: {fileID: 5122950566100318856}
   speechBubble: {fileID: 6385011976531214490}
-  textPositionLeft: {x: 7.96, y: 4.21, z: 0}
-  textPositionRight: {x: -0.63, y: 4.21, z: 0}
+  textPositionLeft: {x: 3.93, y: 5.3, z: 0}
+  textPositionRight: {x: -0.63, y: 5.3, z: 0}
   speechBubbleCanvas: {fileID: 3678948083149478252}
   dialogueText: {fileID: 3216209677193349050}
   playerScript: {fileID: 0}
   isTalking: 0
   animator: {fileID: 7043343211569076198}
   im: {fileID: 0}
+  conversation1:
+  - "Hey Hoggarth, how\u2019s it going? Where are you off to?"
+  - "I\u2019m off to go fish, Mr. Fox"
+  - "I\u2019m looking for a missing Fox, have you seen him?"
+  - "Yeah, he comes by every once in a while. He\u2019s always going on about something
+    crazy."
+  - Like what?
+  - Usually something about the human that he claims is always watching him.
+  - He claims the human controls everything he does. He claims we are all trapped
+    inside a video game
+  - Where did he go?
+  - "To the docks. He said there\u2019s something called a boundary break there.
+    Whatever that means."
+  - "Thank you for your time, you\u2019ve been very helpful."
+  - Farewell, Mr. Fox.
+  conversation1repeat:
+  - Have a good day, Mr. Fox.
+  whoIsTalking1: 0100000000000000010000000000000001000000000000000000000001000000000000000100000000000000
+  whoIsTalking1Repeat: 00000000
 --- !u!95 &7043343211569076198
 Animator:
   serializedVersion: 3
@@ -49,6 +68,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1186719537774870740, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 1186719537774870740, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536386591033527039, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536386591033527039, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.8
+      objectReference: {fileID: 0}
     - target: {fileID: 3879320746076832576, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
       propertyPath: m_Name
       value: Hoggarth Variant
@@ -96,6 +131,38 @@ PrefabInstance:
     - target: {fileID: 3879320746076832578, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414118564326123045, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414118564326123045, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414118564326123045, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 3.93
+      objectReference: {fileID: 0}
+    - target: {fileID: 7414118564326123045, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739314164880357619, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
+      propertyPath: m_margin.w
+      value: 41.777107
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739314164880357619, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
+      propertyPath: m_margin.x
+      value: 47.931458
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739314164880357619, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
+      propertyPath: m_margin.y
+      value: 43.970768
+      objectReference: {fileID: 0}
+    - target: {fileID: 8739314164880357619, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
+      propertyPath: m_margin.z
+      value: 99.23108
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e26b457a8efc1814dbb933bf135a3c9d, type: 3}
