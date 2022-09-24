@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerScript : MonoBehaviour
 {
-    PlayerControls controls;
+    public PlayerControls controls;
     float moveDir;
     [SerializeField] float walkSpeed;
-    [SerializeField] GameObject speechBubble;
-    [SerializeField] TextMeshProUGUI dialogueText;
+    public GameObject speechBubble;
+    public TextMeshProUGUI dialogueText;
     Animator animator;
     Vector3 initialScale;
+    Vector3 speechBubblePosition;
+    Vector3 reverseX = new Vector3(-1, 1, 1);
 
     private void Awake()
     {
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         controls.Gameplay.Walk.performed += ctx => moveDir = ctx.ReadValue<float>();
         controls.Gameplay.Walk.canceled += ctx => moveDir = 0;
 
+        speechBubblePosition = speechBubble.transform.localPosition;
         speechBubble.SetActive(false);
 
         animator = GetComponentInChildren<Animator>();
@@ -33,20 +36,32 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetFloat("MoveDir", Mathf.Abs(moveDir));
-        transform.Translate(new Vector2(moveDir * Time.deltaTime * walkSpeed, 0));
+        Walk();
 
         if(moveDir > 0)
         {
             animator.transform.localScale = initialScale;
+            speechBubble.transform.localPosition = speechBubblePosition;
         }
         else if(moveDir < 0)
         {
-            animator.transform.localScale = Vector3.Scale(initialScale, new Vector3(-1, 1, 1));
+            animator.transform.localScale = Vector3.Scale(initialScale, reverseX);
+            speechBubble.transform.localPosition = Vector3.Scale(speechBubblePosition, reverseX);
         }
     }
 
+    void Walk()
+    {
+        if(transform.position.x <= -1.8f && moveDir < 0)
+        {
+            moveDir = 0;
+        }
 
+
+        animator.SetFloat("MoveDir", Mathf.Abs(moveDir));
+
+        transform.Translate(new Vector2(moveDir * Time.deltaTime * walkSpeed, 0));
+    }
 
     private void OnEnable()
     {
