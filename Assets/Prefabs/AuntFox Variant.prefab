@@ -572,10 +572,18 @@ MonoBehaviour:
   conversation1repeat:
   - You know, my son is a detective too. I sure hope he's okay.
   whoIsTalking1Repeat: 00000000
-  conversation2: []
-  whoIsTalking2: 
-  conversation2repeat: []
-  whoIsTalking2Repeat: 
+  conversation2:
+  - "\u2026"
+  - Hello! Have you found Felix yet?
+  - "I\u2019m sorry Mrs. Fox\u2026 I found Felix\u2019s body."
+  - "He\u2019s dead."
+  - "I knew you\u2019d find him!"
+  - "You\u2019re such a great detective!"
+  whoIsTalking2: 010000000000000001000000010000000000000000000000
+  conversation2repeat:
+  - "I knew you\u2019d find him!"
+  - "You\u2019re such a great detective!"
+  whoIsTalking2Repeat: 0000000000000000
 --- !u!1 &4032857322357364004
 GameObject:
   m_ObjectHideFlags: 0
