@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
     PlayerControls controls;
     float moveDir;
     [SerializeField] float walkSpeed;
+    [SerializeField] GameObject speechBubble;
+    [SerializeField] TextMeshProUGUI dialogueText;
 
     private void Awake()
     {
@@ -18,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     {
         controls.Gameplay.Walk.performed += ctx => moveDir = ctx.ReadValue<float>();
         controls.Gameplay.Walk.canceled += ctx => moveDir = 0;
+
+        speechBubble.SetActive(false);
     }
 
     // Update is called once per frame

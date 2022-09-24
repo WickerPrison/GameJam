@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class NPCdialogue : MonoBehaviour
 {
     [SerializeField] float talkDistance;
+    [SerializeField] GameObject talkMessage;
+    [SerializeField] GameObject dialogueBubble;
+    [SerializeField] TextMeshProUGUI dialogueText;
     PlayerControls controls;
     PlayerMovement playerScript;
+    bool isTalking = false;
+    string dialogueWords = "This is my dialogue";
 
     private void Awake()
     {
@@ -17,8 +23,8 @@ public class NPCdialogue : MonoBehaviour
     void Start()
     {
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-
-        controls.Gameplay.Talk.performed += ctx => StartConversation();
+        dialogueBubble.SetActive(false);
+        controls.Gameplay.Interact.performed += ctx => StartConversation();
     }
 
     void StartConversation()
@@ -28,13 +34,23 @@ public class NPCdialogue : MonoBehaviour
             return;
         }
 
+        isTalking = true;
+        dialogueBubble.SetActive(true);
+        dialogueText.text = dialogueWords;
         Debug.Log("Talk");
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Vector2.Distance(playerScript.transform.position, transform.position) > talkDistance || isTalking)
+        {
+            talkMessage.SetActive(false);
+        }
+        else
+        {
+            talkMessage.SetActive(true);
+        }
     }
 
     private void OnEnable()

@@ -27,7 +27,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Talk"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""e67fe59c-25da-481a-b1fc-3edd2803c93c"",
                     ""expectedControlType"": ""Button"",
@@ -76,7 +76,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Talk"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -88,7 +88,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Walk = m_Gameplay.FindAction("Walk", throwIfNotFound: true);
-        m_Gameplay_Talk = m_Gameplay.FindAction("Talk", throwIfNotFound: true);
+        m_Gameplay_Interact = m_Gameplay.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -139,13 +139,13 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Gameplay;
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Walk;
-    private readonly InputAction m_Gameplay_Talk;
+    private readonly InputAction m_Gameplay_Interact;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
         public GameplayActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Walk => m_Wrapper.m_Gameplay_Walk;
-        public InputAction @Talk => m_Wrapper.m_Gameplay_Talk;
+        public InputAction @Interact => m_Wrapper.m_Gameplay_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -158,9 +158,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Walk.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWalk;
                 @Walk.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWalk;
                 @Walk.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnWalk;
-                @Talk.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTalk;
-                @Talk.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTalk;
-                @Talk.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnTalk;
+                @Interact.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -168,9 +168,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Walk.started += instance.OnWalk;
                 @Walk.performed += instance.OnWalk;
                 @Walk.canceled += instance.OnWalk;
-                @Talk.started += instance.OnTalk;
-                @Talk.performed += instance.OnTalk;
-                @Talk.canceled += instance.OnTalk;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -178,6 +178,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     public interface IGameplayActions
     {
         void OnWalk(InputAction.CallbackContext context);
-        void OnTalk(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }
