@@ -38,8 +38,7 @@ public class AuntFoxDialogue : NPCdialogue
     void SecondLine()
     {
         speechBubble.SetActive(false);
-        playerScript.speechBubble.SetActive(true);
-        playerScript.dialogueText.text = line2;
+        playerScript.SayLine(line2);
     }
 
     void ThirdLine()
@@ -66,6 +65,11 @@ public class AuntFoxDialogue : NPCdialogue
 
     void NextDialogue()
     {
+        if (Vector2.Distance(playerScript.transform.position, transform.position) > talkDistance)
+        {
+            return;
+        }
+
         switch (line)
         {
             case 0:

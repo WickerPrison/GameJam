@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
     float moveDir;
     [SerializeField] float walkSpeed;
     public GameObject speechBubble;
-    public TextMeshProUGUI dialogueText;
+    [SerializeField] TextMeshProUGUI dialogueText;
     Animator animator;
     Vector3 initialScale;
     Vector3 speechBubblePosition;
@@ -36,14 +36,18 @@ public class PlayerScript : MonoBehaviour
 
         if(moveDir > 0)
         {
-            animator.transform.localScale = initialScale;
-            speechBubble.transform.localPosition = speechBubblePosition;
+            LookRight();
         }
         else if(moveDir < 0)
         {
-            animator.transform.localScale = Vector3.Scale(initialScale, reverseX);
-            speechBubble.transform.localPosition = Vector3.Scale(speechBubblePosition, reverseX);
+            LookLeft();
         }
+    }
+
+    public void SayLine(string line)
+    {
+        speechBubble.SetActive(true);
+        dialogueText.text = line;
     }
 
     void Walk()
@@ -57,5 +61,17 @@ public class PlayerScript : MonoBehaviour
         animator.SetFloat("MoveDir", Mathf.Abs(moveDir));
 
         transform.Translate(new Vector2(moveDir * Time.deltaTime * walkSpeed, 0));
+    }
+
+    public void LookLeft()
+    {
+        animator.transform.localScale = Vector3.Scale(initialScale, reverseX);
+        speechBubble.transform.localPosition = Vector3.Scale(speechBubblePosition, reverseX);
+    }
+
+    public void LookRight()
+    {
+        animator.transform.localScale = initialScale;
+        speechBubble.transform.localPosition = speechBubblePosition;
     }
 }

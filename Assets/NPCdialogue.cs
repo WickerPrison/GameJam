@@ -5,7 +5,7 @@ using TMPro;
 
 public class NPCdialogue : MonoBehaviour
 {
-    [SerializeField] float talkDistance;
+    public float talkDistance;
     [SerializeField] GameObject talkMessage;
     public GameObject speechBubble;
     public TextMeshProUGUI dialogueText;
@@ -36,7 +36,15 @@ public class NPCdialogue : MonoBehaviour
         {
             return;
         }
-
+        
+        if(playerScript.transform.position.x < transform.position.x)
+        {
+            playerScript.LookRight();
+        }
+        else
+        {
+            playerScript.LookLeft();
+        }
 
         im.Dialogue();
         isTalking = true;
