@@ -36,7 +36,7 @@ public class NPCdialogue : MonoBehaviour
         {
             return;
         }
-        
+
         if(playerScript.transform.position.x < transform.position.x)
         {
             playerScript.LookRight();

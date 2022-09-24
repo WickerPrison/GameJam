@@ -583,6 +583,7 @@ GameObject:
   - component: {fileID: 5859470157432767346}
   - component: {fileID: 873754050720696955}
   - component: {fileID: 5401779813824221007}
+  - component: {fileID: 7507557782497711116}
   m_Layer: 0
   m_Name: Art
   m_TagString: Untagged
@@ -635,6 +636,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7507557782497711116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3867063340711134956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1bc6ca517d7df49aa0721a9c52c373, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3884559538652198593
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,6 +896,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4349823325746585520}
   - component: {fileID: 4349823325746585521}
+  - component: {fileID: 6153816941485323006}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -923,6 +937,22 @@ MonoBehaviour:
   speechBubble: {fileID: 9049190514143213641}
   dialogueText: {fileID: 2338033878971967456}
   animator: {fileID: 0}
+--- !u!114 &6153816941485323006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4349823325746585522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7d03db9306a4224383f363cd673b0db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sawPlayerConversation:
+  - Umm.... Hello there?
+  - I've never noticed you before.
+  - Well... best not to dwell on it.
 --- !u!1 &4349823326428599087
 GameObject:
   m_ObjectHideFlags: 0

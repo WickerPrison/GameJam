@@ -12,14 +12,15 @@ public class Notebook : MonoBehaviour
     PlayerScript playerScript;
     int line = 0;
     float interactDistance = 5;
+    float sightDistance = 14;
     bool open = false;
     float playerDistance;
     string firstSightLine = "Hey a notebook. I happen to have one just like it. Maybe there will be something useful in there.";
     string line1 = "I'll open it to the last page and read it out loud.";
     string line2 = "\"The three Gods created the world in 24 hours. None of us existed until mere moments ago. The world is a lie\"";
     string line3 = "What an odd thing to write. I bet it is slam poetry. That stuff is always so silly.";
-    string line4 = "\"You may not believe me, but it is the truth. Our actions are not our own. To see the truth all you must do is look to the right.\"";
-    string line5 = "I guess I have spent my whole life looking straight ahead or straight back. I wonder what is to my right.";
+    string line4 = "\"You may not believe me, but it is the truth. Our actions are not our own. To see the truth all you must do is look to the side.\"";
+    string line5 = "I guess I have spent my whole life looking straight ahead or straight back. I wonder what is to my side.";
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +37,7 @@ public class Notebook : MonoBehaviour
     {
         playerDistance = Vector3.Distance(playerScript.transform.position, transform.position);
 
-        if (firstSight && playerDistance < 14)
+        if (firstSight && playerDistance < sightDistance)
         {
             firstSight = false;
             im.Dialogue();
@@ -61,6 +62,11 @@ public class Notebook : MonoBehaviour
 
     void NextDialogue()
     {
+        if(playerDistance > sightDistance)
+        {
+            return;
+        }
+
         switch (line)
         {
             case 0:
