@@ -5,12 +5,27 @@ using UnityEngine;
 [System.Serializable]
 public class AuntFoxDialogue : NPCdialogue
 {
-    int line = 1;
+    List<string> currentConversation;
+    List<int> currentWhoIsTalking;
+
+    [SerializeField] List<string> conversation1;
+    [SerializeField] List<int> whoIsTalking1;
+    [SerializeField] List<string> conversation1repeat;
+    [SerializeField] List<int> whoIsTalking1Repeat;
+
+    [SerializeField] List<string> conversation2;
+    [SerializeField] List<int> whoIsTalking2;
+    [SerializeField] List<string> conversation2repeat;
+    [SerializeField] List<int> whoIsTalking2Repeat;
+
+    int lineIndex;
     int conversationCounter = 0;
     string line1 = "Thank goodness you're here Detective Fox! My son Felix has gone missing. Can you help me find him?";
     string line2 = "No problem ma'am. I'll find your son in no time.";
     string line3 = "Wow you're so helpful, I like that in a fox! You should go look in his room, right down the hall. Maybe you'll find some clues there.";
     string repeatedLine = "You know my son is a detective too. I sure hope he's okay.";
+    bool hadFirstConversation = false;
+    bool hadSecondConversation = false;
 
     public override void Start()
     {
@@ -22,52 +37,38 @@ public class AuntFoxDialogue : NPCdialogue
     {
         if (!playerScript.mysterySolved)
         {
-            switch (conversationCounter)
+            if (!hadFirstConversation)
             {
-                case 0:
-                    conversationCounter += 1;
-                    playerScript.speechBubble.SetActive(false);
-                    speechBubble.SetActive(true);
-                    dialogueText.text = line1;
-                    break;
-                default:
-                    line = 0;
-                    RepeatedLIne();
-                    break;
+                hadFirstConversation = true;
+                currentConversation = conversation1;
+                currentWhoIsTalking = whoIsTalking1;
             }
+            else
+            {
+                currentConversation = conversation1repeat;
+                currentWhoIsTalking = whoIsTalking1Repeat;
+            }
+
+            lineIndex = 0;
+            NextDialogue();
         }
         else
         {
+            if (!hadSecondConversation)
+            {
+                hadSecondConversation = true;
+                currentConversation = conversation2;
+                currentWhoIsTalking = whoIsTalking2;
+            }
+            else
+            {
+                currentConversation = conversation2repeat;
+                currentWhoIsTalking = whoIsTalking2Repeat;
+            }
 
+            lineIndex = 0;
+            NextDialogue();
         }
-    }
-
-    void SecondLine()
-    {
-        speechBubble.SetActive(false);
-        playerScript.SayLine(line2);
-    }
-
-    void ThirdLine()
-    {
-        playerScript.speechBubble.SetActive(false);
-        speechBubble.SetActive(true);
-        dialogueText.text = line3;
-    }
-
-    void RepeatedLIne()
-    {
-        playerScript.speechBubble.SetActive(false);
-        speechBubble.SetActive(true);
-        dialogueText.text = repeatedLine;
-    }
-
-    void EndDialogue()
-    {
-        playerScript.speechBubble.SetActive(false);
-        speechBubble.SetActive(false);
-        im.Gameplay();
-        isTalking = false;
     }
 
     void NextDialogue()
@@ -77,22 +78,42 @@ public class AuntFoxDialogue : NPCdialogue
             return;
         }
 
-        switch (line)
+        if (lineIndex == currentConversation.Count)
         {
-            case 0:
-                EndDialogue();
-                break;
-            case 1:
-                line += 1;
-                SecondLine();
-                break;
-            case 2:
-                line += 1;
-                ThirdLine();
-                break;
-            case 3:
-                EndDialogue();
-                break;
+            EndConversation();
+            return;
         }
+
+        if (currentWhoIsTalking[lineIndex] == 0)
+        {
+            AuntLine(currentConversation[lineIndex]);
+        }
+        else
+        {
+            FoxLine(currentConversation[lineIndex]);
+        }
+
+        lineIndex += 1;
+    }
+
+    void EndConversation()
+    {
+        playerScript.speechBubble.SetActive(false);
+        speechBubble.SetActive(false);
+        im.Gameplay();
+        isTalking = false;
+    }
+
+    void AuntLine(string line)
+    {
+        playerScript.speechBubble.SetActive(false);
+        speechBubble.SetActive(true);
+        dialogueText.text = line;
+    }
+
+    void FoxLine(string line)
+    {
+        speechBubble.SetActive(false);
+        playerScript.SayLine(line);
     }
 }

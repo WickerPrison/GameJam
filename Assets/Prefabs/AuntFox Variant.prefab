@@ -478,59 +478,6 @@ Transform:
   m_Father: {fileID: 680662274628888691}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &33527487512216481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2945034813789166987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad7b7dd06013247449dd46c1d3ff8d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  talkDistance: 7
-  talkMessage: {fileID: 1151410808119483146}
-  speechBubble: {fileID: 1188630284099674392}
-  textPositionLeft: {x: 7.96, y: 4.21, z: 0}
-  textPositionRight: {x: -0.63, y: 4.21, z: 0}
-  speechBubbleCanvas: {fileID: 8929791059399080174}
-  dialogueText: {fileID: 7223923109903132216}
-  playerScript: {fileID: 0}
-  isTalking: 0
-  animator: {fileID: 1294959712292324754}
-  im: {fileID: 0}
---- !u!95 &1294959712292324754
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2945034813687224020}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8f54b431b7167f84bb763f6d74c180e5, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!210 &8701870565992444549
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2945034813687224020}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &2103383947947229303
 GameObject:
   m_ObjectHideFlags: 0
@@ -561,6 +508,74 @@ Transform:
   m_Father: {fileID: 596921785966999515}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1294959712292324754
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2945034813687224020}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8f54b431b7167f84bb763f6d74c180e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!210 &8701870565992444549
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2945034813687224020}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!114 &33527487512216481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2945034813789166987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad7b7dd06013247449dd46c1d3ff8d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  talkDistance: 7
+  talkMessage: {fileID: 1151410808119483146}
+  speechBubble: {fileID: 1188630284099674392}
+  textPositionLeft: {x: 7.96, y: 4.21, z: 0}
+  textPositionRight: {x: -0.63, y: 4.21, z: 0}
+  speechBubbleCanvas: {fileID: 8929791059399080174}
+  dialogueText: {fileID: 7223923109903132216}
+  playerScript: {fileID: 0}
+  isTalking: 0
+  animator: {fileID: 1294959712292324754}
+  im: {fileID: 0}
+  conversation1:
+  - 'Thank goodness you''re here Detective Fox! '
+  - My son Felix has gone missing. Can you help me find him?
+  - No problem ma'am. I'll find your son in no time.
+  - Wow you're so helpful, I like that in a fox!
+  - You should go look in his room, right down the hall. Maybe you'll find some clues
+    there.
+  whoIsTalking1: 0000000000000000010000000000000000000000
+  conversation1repeat:
+  - You know, my son is a detective too. I sure hope he's okay.
+  whoIsTalking1Repeat: 00000000
+  conversation2: []
+  whoIsTalking2: 
+  conversation2repeat: []
+  whoIsTalking2Repeat: 
 --- !u!1 &4032857322357364004
 GameObject:
   m_ObjectHideFlags: 0
