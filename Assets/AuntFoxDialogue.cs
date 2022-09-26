@@ -19,22 +19,27 @@ public class AuntFoxDialogue : NPCdialogue
     [SerializeField] List<int> whoIsTalking2Repeat;
 
     int lineIndex;
-    int conversationCounter = 0;
-    string line1 = "Thank goodness you're here Detective Fox! My son Felix has gone missing. Can you help me find him?";
-    string line2 = "No problem ma'am. I'll find your son in no time.";
-    string line3 = "Wow you're so helpful, I like that in a fox! You should go look in his room, right down the hall. Maybe you'll find some clues there.";
-    string repeatedLine = "You know my son is a detective too. I sure hope he's okay.";
     bool hadFirstConversation = false;
     bool hadSecondConversation = false;
+    bool onlyWinOnce = false;
+
+    AudioSource source;
+
 
     public override void Start()
     {
         base.Start();
         im.controls.Dialogue.Continue.performed += ctx => NextDialogue();
+        source = im.gameObject.GetComponent<AudioSource>();
     }
 
     public override void FirstLine()
     {
+        if (playerScript.hasWon)
+        {
+            return;
+        }
+
         if (!playerScript.mysterySolved)
         {
             if (!hadFirstConversation)
@@ -73,6 +78,11 @@ public class AuntFoxDialogue : NPCdialogue
 
     void NextDialogue()
     {
+        if (playerScript.hasWon)
+        {
+            return;
+        }
+
         if (Vector2.Distance(playerScript.transform.position, transform.position) > talkDistance)
         {
             return;
@@ -102,6 +112,12 @@ public class AuntFoxDialogue : NPCdialogue
         speechBubble.SetActive(false);
         im.Gameplay();
         isTalking = false;
+        if (hadSecondConversation && !onlyWinOnce)
+        {
+            onlyWinOnce = true;
+            source.volume = 0;
+            im.YouWin();
+        }
     }
 
     void AuntLine(string line)

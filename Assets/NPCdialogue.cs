@@ -66,7 +66,12 @@ public class NPCdialogue : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Vector2.Distance(playerScript.transform.position, transform.position) > talkDistance || isTalking)
+        if (playerScript.hasWon)
+        {
+            return;
+        }
+
+        if(Vector2.Distance(playerScript.transform.position, transform.position) > talkDistance || isTalking) 
         {
             talkMessage.SetActive(false);
         }

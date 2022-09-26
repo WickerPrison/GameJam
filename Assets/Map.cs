@@ -11,6 +11,7 @@ public class Map : MonoBehaviour
     PlayerScript playerScript;
     PlayerDialogue playerDialogue;
     float playerDistance;
+    bool onlyUseOnce = false;
 
     private void Start()
     {
@@ -23,6 +24,13 @@ public class Map : MonoBehaviour
     private void Update()
     {
         playerDistance = Vector3.Distance(playerScript.transform.position, transform.position);
+
+        if (onlyUseOnce)
+        {
+            examineMessage.SetActive(false);
+            return;
+        }
+
         if (!hasInspected && playerDistance < interactDistance)
         {
             examineMessage.SetActive(true);
@@ -35,11 +43,12 @@ public class Map : MonoBehaviour
 
     void InspectMap()
     {
-        if (hasInspected || playerDistance > interactDistance)
+        if (hasInspected || playerDistance > interactDistance || onlyUseOnce)
         {
             return;
         }
 
+        onlyUseOnce = true;
         playerDialogue.StartConversation(playerDialogue.mapConversation);
     }
 }

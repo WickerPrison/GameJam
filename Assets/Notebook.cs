@@ -12,8 +12,9 @@ public class Notebook : MonoBehaviour
     PlayerScript playerScript;
     int line = 0;
     float interactDistance = 5;
-    float sightDistance = 14;
+    float sightDistance = 12;
     bool open = false;
+    bool onlyUseOnce = false;
     float playerDistance;
     string firstSightLine = "Hey a notebook. I happen to have one just like it. Maybe there will be something useful in there.";
     string line1 = "I'll open it to the last page and read it out loud.";
@@ -42,6 +43,12 @@ public class Notebook : MonoBehaviour
             firstSight = false;
             im.Dialogue();
             playerScript.SayLine(firstSightLine);
+        }
+
+        if (onlyUseOnce)
+        {
+            openMessage.SetActive(false);
+            return;
         }
 
         if(!open && playerDistance < interactDistance)
@@ -103,11 +110,12 @@ public class Notebook : MonoBehaviour
 
     void OpenNotebook()
     {
-        if(open || playerDistance > interactDistance)
+        if(open || playerDistance > interactDistance || onlyUseOnce)
         {
             return;
         }
 
+        onlyUseOnce = true;
         open = true;
         closedImage.SetActive(false);
         openImage.SetActive(true);

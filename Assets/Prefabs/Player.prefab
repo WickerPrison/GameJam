@@ -648,6 +648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1bc6ca517d7df49aa0721a9c52c373, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  footstep: {fileID: 8300000, guid: c2fc941e280adfb42b67db1e699e650f, type: 3}
 --- !u!1 &3884559538652198593
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,6 +900,7 @@ GameObject:
   - component: {fileID: 6153816941485323006}
   - component: {fileID: 7001948264819013644}
   - component: {fileID: 7215691888401747429}
+  - component: {fileID: 4866802737964805507}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -935,13 +937,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407414a67d0e54e4da9beb303bccdef3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
   speechBubble: {fileID: 9049190514143213641}
   dialogueText: {fileID: 2338033878971967456}
   textPositionLeft: {x: 9.382202, y: 3.552499, z: 0}
   textPositionRight: {x: 0.81, y: 3.552499, z: 0}
   speechBubbleCanvas: {fileID: 2081197802161314337}
   animator: {fileID: 0}
+  mysterySolved: 0
+  hasWon: 0
 --- !u!114 &6153816941485323006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,6 +965,11 @@ MonoBehaviour:
   - 'Hmm, a map. It looks like Felix was searching for something. '
   - He has the docks circled. I should go look there. They're not far, just off to
     the right
+  winConversation:
+  - WAIT! NO! STOP!
+  - Don't press that button, please!
+  deathConversation:
+  - Please don't turn the game off. I'm scared to die.
 --- !u!61 &7001948264819013644
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1009,6 +1017,102 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!82 &4866802737964805507
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4349823325746585522}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4349823326428599087
 GameObject:
   m_ObjectHideFlags: 0

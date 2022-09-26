@@ -17,12 +17,16 @@ public class PlayerScript : MonoBehaviour
     Vector3 initialScale;
     Vector3 reverseX = new Vector3(-1, 1, 1);
     InputManager im;
-    public bool mysterySolved = false;
+    public bool mysterySolved;
+    public bool hasWon = false;
+    PlayerDialogue playerDialogue;
+    float timer = 10;
 
     // Start is called before the first frame update
     void Start()
     {
         speechBubbleRenderer = speechBubble.GetComponent<SpriteRenderer>();
+        playerDialogue = GetComponent<PlayerDialogue>();
 
         im = GameObject.FindGameObjectWithTag("GameManager").GetComponent<InputManager>();
         im.controls.Gameplay.Walk.performed += ctx => moveDir = ctx.ReadValue<float>();
@@ -47,6 +51,21 @@ public class PlayerScript : MonoBehaviour
         {
             LookLeft();
         }
+
+        if (hasWon)
+        {
+            timer -= Time.deltaTime;
+            if(timer <= 0)
+            {
+                timer = Random.Range(5f, 15f);
+                DeathLine();
+            }
+        }
+    }
+
+    public void DeathLine()
+    {
+        playerDialogue.StartConversation(playerDialogue.deathConversation);
     }
 
     public void SayLine(string line)
@@ -66,6 +85,13 @@ public class PlayerScript : MonoBehaviour
         animator.SetFloat("MoveDir", Mathf.Abs(moveDir));
 
         transform.Translate(new Vector2(moveDir * Time.deltaTime * walkSpeed, 0));
+    }
+
+    public void Win()
+    {
+        hasWon = true;
+        im.controls.Gameplay.Disable();
+        animator.Play("Win");
     }
 
     public void LookLeft()

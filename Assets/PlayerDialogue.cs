@@ -6,6 +6,8 @@ public class PlayerDialogue : MonoBehaviour
 {
     public List<string> sawPlayerConversation = new List<string>();
     public List<string> mapConversation = new List<string>();
+    public List<string> winConversation;
+    public List<string> deathConversation;
     List<string> currentConversation = new List<string>();
     InputManager im;
     int lineIndex;
@@ -47,10 +49,21 @@ public class PlayerDialogue : MonoBehaviour
 
     void EndConversation()
     {
+        if(currentConversation == sawPlayerConversation || currentConversation == winConversation)
+        {
+            im.ResumeMusic();
+        }
         lineIndex = 0;
         inConversation = false;
         im.Gameplay();
         playerScript.speechBubble.SetActive(false);
-        playerScript.animator.Play("Idle");
+        if (!playerScript.hasWon)
+        {
+            playerScript.animator.Play("Idle");
+        }
+        else
+        {
+            playerScript.animator.Play("LookingAtPlayer");
+        }
     }
 }
